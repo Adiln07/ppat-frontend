@@ -19,6 +19,14 @@
   }
 }
 
+.roboto-font {
+  font-family: var(--font-roboto);
+}
+
+.kanit-font {
+  font-family: var(--font-kanit);
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
