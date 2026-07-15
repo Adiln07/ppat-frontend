@@ -84,7 +84,7 @@ const TopBar = () => {
               />
             </div>
             {isKlik && (
-              <div className="absolute bg-white w-[10em] mt-4 right-0 shadow-lg rounded-lg flex  flex-col gap-2 ">
+              <div className="absolute bg-white w-[10em] mt-4 right-0 shadow-lg rounded-lg flex z-50 flex-col gap-2 ">
                 <div className="flex items-center gap-2 py-2 bg-red-500 rounded-lg pl-2 cursor-pointer">
                   <FontAwesomeIcon
                     icon={faRightFromBracket}
