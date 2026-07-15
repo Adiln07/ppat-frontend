@@ -1,11 +1,13 @@
 "use client";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAdd, faSearch } from "@fortawesome/free-solid-svg-icons";
-import { useEffect } from "react";
-import { useAdminCityStore } from "@/stores/admin/city/AdminCityStore";
+import { faAdd, faLocation, faSearch } from "@fortawesome/free-solid-svg-icons";
 
-export default function CityTabel({
+import { useEffect } from "react";
+import { useAdminNotaryStore } from "@/stores/admin/notary/AdminNotaryStore";
+import Link from "next/link";
+
+const NotaryTabel = ({
   search,
   setSearch,
   page,
@@ -17,45 +19,47 @@ export default function CityTabel({
   page: number;
   setPage: (value: number) => void;
   limit: number;
-}) {
-  const cities = useAdminCityStore((state) => state.cities);
-  const pagination = useAdminCityStore((state) => state.pagination);
-  const fetchGetAllCity = useAdminCityStore((state) => state.fetchGetAllCity);
-  const isAddCityOpen = useAdminCityStore((state) => state.isAddCityOpen);
-  const isEditCityOpen = useAdminCityStore((state) => state.isEditCityOpen);
-  const setCityId = useAdminCityStore((state) => state.setCityId);
-  const isDeleteCityOpen = useAdminCityStore((state) => state.isDeleteCityOpen);
+}) => {
+  const notaries = useAdminNotaryStore((state) => state.notaries);
+  const isAddNotaryOpen = useAdminNotaryStore((state) => state.isAddNotaryOpen);
+  const isEditNotaryOpen = useAdminNotaryStore(
+    (state) => state.isEditNotaryOpen,
+  );
+  const isDeleteNotaryOpen = useAdminNotaryStore(
+    (state) => state.isDeleteNotaryOpen,
+  );
+  const pagination = useAdminNotaryStore((state) => state.pagination);
+  const fetchGetAllNotary = useAdminNotaryStore(
+    (state) => state.fetchGetAllNotary,
+  );
+  const setNotaryId = useAdminNotaryStore((state) => state.setNotaryId);
 
   useEffect(() => {
-    fetchGetAllCity({
-      name: search,
-      pages: page,
-      limit: limit,
-    });
+    fetchGetAllNotary({ name: search, pages: page, limit });
   }, [search, page, limit]);
 
-  const openEditCity = (id: number) => {
-    isEditCityOpen();
-    setCityId(id);
+  const openModalEdit = (id: number) => {
+    isEditNotaryOpen();
+    setNotaryId(id);
   };
 
-  const openDeleteCity = (id: number) => {
-    isDeleteCityOpen();
-    setCityId(id);
+  const openModalDelete = (id: number) => {
+    isDeleteNotaryOpen();
+    setNotaryId(id);
   };
 
   return (
     <div className="">
       <div className="flex justify-between items-center">
-        <h1 className="kanit-font font-semibold text-2xl">City Management</h1>
+        <h1 className="kanit-font font-semibold text-2xl">Notary Management</h1>
         <div>
           <div></div>
           <div
             className="flex items-center gap-2 bg-[#61CE69] text-white py-1 px-2 rounded-lg cursor-pointer drop-shadow-xl"
-            onClick={isAddCityOpen}
+            onClick={isAddNotaryOpen}
           >
             <FontAwesomeIcon icon={faAdd} />
-            <p className="roboto-font font-medium">Add City</p>
+            <p className="roboto-font font-medium">Add Notary</p>
           </div>
         </div>
       </div>
@@ -69,7 +73,16 @@ export default function CityTabel({
                     no
                   </th>
                   <th className="px-6 py-3 text-xs font-semibold kanit-font uppercase tracking-wide text-slate-500">
-                    City
+                    name
+                  </th>
+                  <th className="px-6 py-3 text-xs font-semibold kanit-font uppercase tracking-wide text-slate-500">
+                    SKPPAT
+                  </th>
+                  <th className="px-6 py-3 text-xs font-semibold kanit-font uppercase tracking-wide text-slate-500">
+                    address
+                  </th>
+                  <th className="px-6 py-3 text-xs font-semibold kanit-font uppercase tracking-wide text-slate-500">
+                    coordinat
                   </th>
                   <th className="px-6 py-3 text-xs font-semibold kanit-font uppercase tracking-wide text-slate-500">
                     Created At
@@ -83,7 +96,7 @@ export default function CityTabel({
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100">
-                {cities.map((row, i) => (
+                {notaries.map((row, i) => (
                   <tr
                     key={row.id}
                     className="hover:bg-slate-50 transition-colors"
@@ -95,6 +108,21 @@ export default function CityTabel({
                     <td className="px-6 py-4 text-sm roboto-font font-medium text-slate-800">
                       {row.name}
                     </td>
+                    <td className="px-6 py-4 text-sm roboto-font font-medium text-slate-800">
+                      {row.skPpat}
+                    </td>
+                    <td className="px-6 py-4 text-sm roboto-font font-medium text-slate-800">
+                      {row.address}
+                    </td>
+                    <td className="px-6 py-4 text-sm roboto-font font-medium text-white">
+                      <Link
+                        href={"https://maps.app.goo.gl/6KVXLyfBN6C7Q3Ch8"}
+                        className="bg-blue-500 px-6 py-1 rounded-lg shadow-lg cursor-pointer"
+                      >
+                        <FontAwesomeIcon icon={faLocation} />
+                      </Link>
+                    </td>
+
                     <td className="px-6 py-4 text-sm roboto-font text-slate-500">
                       <td>
                         {new Date(row.createdAt).toLocaleDateString("id-ID", {
@@ -116,13 +144,13 @@ export default function CityTabel({
                     <td className="px-6 py-4 text-right">
                       <div className="flex items-center justify-end gap-2">
                         <button
-                          onClick={() => openEditCity(row.id)}
+                          onClick={() => openModalEdit(row.id)}
                           className="px-3 py-1.5 text-sm roboto-font font-medium rounded-md border border-slate-200 text-slate-600 bg-white hover:bg-slate-100 transition-colors"
                         >
                           Edit
                         </button>
                         <button
-                          onClick={() => openDeleteCity(row.id)}
+                          onClick={() => openModalDelete(row.id)}
                           className="px-3 py-1.5 text-sm roboto-font font-medium rounded-md border border-red-200 text-red-600 bg-white hover:bg-red-50 transition-colors"
                         >
                           Delete
@@ -138,7 +166,7 @@ export default function CityTabel({
           {/* Pagination footer */}
           <div className="flex items-center kanit-font justify-between px-6 py-3 bg-slate-50 border-t border-slate-200">
             <span className="text-sm text-slate-500">
-              Showing {cities.length} of {pagination?.totalItems} Notaries
+              Showing {notaries.length} of {pagination?.totalItems} Notaries
             </span>
 
             <div className="flex items-center gap-1.5">
@@ -172,4 +200,6 @@ export default function CityTabel({
       </div>
     </div>
   );
-}
+};
+
+export default NotaryTabel;

@@ -8,28 +8,34 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { usePathname } from "next/navigation";
 
 import { useAdminCityStore } from "@/stores/admin/city/AdminCityStore";
+import { useAdminNotaryStore } from "@/stores/admin/notary/AdminNotaryStore";
 
 const Alert = () => {
   const pathName = usePathname();
+  const city = pathName?.startsWith("/admin/city");
+  const notary = pathName?.startsWith("/admin/notary");
 
-  const popAlert = useAdminCityStore((state) => state.popAlert);
+  const cityPopAlert = useAdminCityStore((state) => state.popAlert);
+  const notaryPopAlert = useAdminNotaryStore((state) => state.popAlert);
+
+  const popAlert = city ? cityPopAlert : notary ? notaryPopAlert : null;
 
   return (
     <div
-      className={`${popAlert.isVisible ? "opacity-100" : "hidden"}  fixed  m-auto left-1/2 top-10 z-2000 w-full -translate-x-1/2 transform px-20 transition-opacity duration-500`}
+      className={`${popAlert?.isVisible ? "opacity-100" : "hidden"}  fixed  m-auto left-1/2 top-10 z-2000 w-full -translate-x-1/2 transform px-20 transition-opacity duration-500`}
     >
       <div
-        className={`${popAlert.status ? "bg-[#D9E9E1] border-[#C0DBCE]" : "bg-[#F5D8D6] border-[#EEBDBA]"}  border-2  rounded-lg `}
+        className={`${popAlert?.status ? "bg-[#D9E9E1] border-[#C0DBCE]" : "bg-[#F5D8D6] border-[#EEBDBA]"}  border-2  rounded-lg `}
       >
         <div className="flex  items-center my-2 gap-2 pl-3">
           <FontAwesomeIcon
-            icon={popAlert.status ? faCheckCircle : faXmarkCircle}
-            className={`${popAlert.status ? "text-[#43936C]" : "text-[#CB3A31]"} text-2xl`}
+            icon={popAlert?.status ? faCheckCircle : faXmarkCircle}
+            className={`${popAlert?.status ? "text-[#43936C]" : "text-[#CB3A31]"} text-2xl`}
           />
           <p
-            className={`${popAlert.status ? "text-[#43936C]" : "text-[#CB3A31]"} text-xl font-semibold `}
+            className={`${popAlert?.status ? "text-[#43936C]" : "text-[#CB3A31]"} text-xl font-semibold `}
           >
-            {popAlert.message}{" "}
+            {popAlert?.message}{" "}
           </p>
         </div>
       </div>
