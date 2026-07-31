@@ -14,9 +14,12 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
+import { useAdminAuthStore } from "@/stores/admin/auth/AdminAuthStore";
 
 const TopBar = () => {
   const [isKlik, setIsKlik] = useState(false);
+  const router = useRouter();
   const handleToggle = () => {
     setIsKlik((s) => !s);
   };
@@ -25,6 +28,12 @@ const TopBar = () => {
 
   const pathName = usePathname();
 
+  const logout = useAdminAuthStore((state) => state.logout);
+
+  const handleLogout = () => {
+    logout();
+    router.replace("/admin/login");
+  };
   const navItemsAdmin = [
     {
       href: "/admin/city",
@@ -85,7 +94,10 @@ const TopBar = () => {
             </div>
             {isKlik && (
               <div className="absolute bg-white w-[10em] mt-4 right-0 shadow-lg rounded-lg flex z-50 flex-col gap-2 ">
-                <div className="flex items-center gap-2 py-2 bg-red-500 rounded-lg pl-2 cursor-pointer">
+                <div
+                  className="flex items-center gap-2 py-2 bg-red-500 rounded-lg pl-2 cursor-pointer"
+                  onClick={handleLogout}
+                >
                   <FontAwesomeIcon
                     icon={faRightFromBracket}
                     className="text-white text-xl"
