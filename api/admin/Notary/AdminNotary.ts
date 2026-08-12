@@ -15,6 +15,7 @@ export const adminNotaryApi = {
     name?: string;
     pages?: number;
     limit?: number;
+    kotaId?: number | null;
   }) => {
     try {
       const response = await AxiosConfig.get("/notaries", { params });

@@ -1,9 +1,11 @@
 import axios from "axios";
 
+export const API_BASE_URL = "http://localhost:5000";
+
 const AxiosConfig = axios.create({
   baseURL:
     typeof window !== "undefined"
-      ? `http://${window.location.hostname}:3000`
+      ? `http://${window.location.hostname}:5000`
       : "",
 });
 

@@ -1,112 +1,74 @@
 "use client";
 
+import { useAdminArticleStore } from "@/stores/admin/article/AdminArticleStore";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useEffect } from "react";
 import { faAdd, faLocation, faSearch } from "@fortawesome/free-solid-svg-icons";
+import { API_BASE_URL } from "@/service/AxiosConfig";
 
-import { useEffect, useState } from "react";
-import { useAdminNotaryStore } from "@/stores/admin/notary/AdminNotaryStore";
-import Link from "next/link";
-
-const NotaryTabel = ({
+const ArticleTabel = ({
   search,
   setSearch,
   page,
   setPage,
   limit,
-  // selectedCityId,
-  // setSelectedCityId,
 }: {
   search: string;
   setSearch: (value: string) => void;
   page: number;
   setPage: (value: number) => void;
   limit: number;
-  // selectedCityId: number | null;
-  // setSelectedCityId: (value: number | null) => void;
 }) => {
-  const [selectedCityId, setSelectedCityId] = useState<number | null>(null);
-  const notaries = useAdminNotaryStore((state) => state.notaries);
+  const articles = useAdminArticleStore((state) => state.articles);
 
-  const cities = useAdminNotaryStore((state) => state.cities);
-  const fetchGetAllCity = useAdminNotaryStore((state) => state.fetchGetAllCity);
-
-  useEffect(() => {
-    fetchGetAllCity();
-  }, []);
-
-  // fungsi untuk buka halaman popup (add & edit & delete)
-  const isAddNotaryOpen = useAdminNotaryStore((state) => state.isAddNotaryOpen);
-  const isEditNotaryOpen = useAdminNotaryStore(
-    (state) => state.isEditNotaryOpen,
+  const isAddArticleOpen = useAdminArticleStore(
+    (state) => state.isAddArticleOpen,
   );
-  const isDeleteNotaryOpen = useAdminNotaryStore(
-    (state) => state.isDeleteNotaryOpen,
+  const isEditArticleOpen = useAdminArticleStore(
+    (state) => state.isEditArticleOpen,
+  );
+  const isDeleteArticleOpen = useAdminArticleStore(
+    (state) => state.isDeleteArticleOpen,
   );
 
-  // pagination
-  const pagination = useAdminNotaryStore((state) => state.pagination);
+  const pagination = useAdminArticleStore((state) => state.pagination);
 
-  // ambil semua data notary
-  const fetchGetAllNotary = useAdminNotaryStore(
-    (state) => state.fetchGetAllNotary,
+  const fetchGetAllArticle = useAdminArticleStore(
+    (state) => state.fetchGetAllArticle,
   );
 
   useEffect(() => {
-    fetchGetAllNotary({
-      name: search,
-      pages: page,
-      limit,
-      kotaId: selectedCityId,
-    });
-  }, [search, page, limit, selectedCityId]);
+    fetchGetAllArticle({ name: search, pages: page, limit });
+  }, [search, page, limit]);
 
-  // untuk dipakai untuk open modal edit dan delete
-  const setNotaryId = useAdminNotaryStore((state) => state.setNotaryId);
+  const setArticleId = useAdminArticleStore((state) => state.setArticleId);
 
   const openModalEdit = (id: number) => {
-    isEditNotaryOpen();
-    setNotaryId(id);
+    isEditArticleOpen();
+    setArticleId(id);
   };
 
   const openModalDelete = (id: number) => {
-    isDeleteNotaryOpen();
-    setNotaryId(id);
+    isDeleteArticleOpen();
+    setArticleId(id);
   };
 
   return (
     <div className="">
       <div className="flex justify-between items-center">
-        <h1 className="kanit-font font-semibold text-2xl">Notary Management</h1>
+        <h1 className="kanit-font font-semibold text-2xl">
+          Articles Management
+        </h1>
         <div>
           <div></div>
           <div
             className="flex items-center gap-2 bg-[#61CE69] text-white py-1 px-2 rounded-lg cursor-pointer drop-shadow-xl"
-            onClick={isAddNotaryOpen}
+            onClick={isAddArticleOpen}
           >
             <FontAwesomeIcon icon={faAdd} />
-            <p className="roboto-font font-medium">Add Notary</p>
+            <p className="roboto-font font-medium">Add Article</p>
           </div>
         </div>
-      </div>
-      <div className="pt-8 w-1/6">
-        <select
-          required
-          value={selectedCityId ?? ""}
-          onChange={(e) => {
-            setSelectedCityId(
-              e.target.value === "" ? null : Number(e.target.value),
-            );
-            setPage(1);
-          }}
-          className="roboto-font w-full border border-slate-200 rounded-md px-3 py-2 text-sm text-slate-800 bg-white focus:outline-none focus:ring-2 focus:ring-emerald-400/40 focus:border-emerald-400 transition-colors"
-        >
-          <option value={0}>Pilih kota</option>
-          {cities.map((city, i) => (
-            <option key={i} value={city.id}>
-              {city.name}
-            </option>
-          ))}
-        </select>
       </div>
       <div className="w-full py-6 bg-slate-50 min-h-fit ">
         <div className="w-full mx-auto bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
@@ -118,22 +80,20 @@ const NotaryTabel = ({
                     no
                   </th>
                   <th className="px-6 py-3 text-xs font-semibold kanit-font uppercase tracking-wide text-slate-500">
-                    name
+                    title
                   </th>
                   <th className="px-6 py-3 text-xs font-semibold kanit-font uppercase tracking-wide text-slate-500">
-                    SKPPAT
+                    theme
                   </th>
                   <th className="px-6 py-3 text-xs font-semibold kanit-font uppercase tracking-wide text-slate-500">
-                    address
+                    event date
                   </th>
                   <th className="px-6 py-3 text-xs font-semibold kanit-font uppercase tracking-wide text-slate-500">
-                    coordinat
+                    image
                   </th>
+
                   <th className="px-6 py-3 text-xs font-semibold kanit-font uppercase tracking-wide text-slate-500">
-                    Created At
-                  </th>
-                  <th className="px-6 py-3 text-xs font-semibold kanit-font uppercase tracking-wide text-slate-500">
-                    Updated At
+                    Created at
                   </th>
                   <th className="px-6 py-3 text-xs font-semibold kanit-font uppercase tracking-wide text-slate-500 text-right">
                     Actions
@@ -141,7 +101,7 @@ const NotaryTabel = ({
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100">
-                {notaries.map((row, i) => (
+                {articles.map((row, i) => (
                   <tr
                     key={row.id}
                     className="hover:bg-slate-50 transition-colors"
@@ -151,32 +111,31 @@ const NotaryTabel = ({
                     </td>
 
                     <td className="px-6 py-4 text-sm roboto-font font-medium text-slate-800">
-                      {row.name}
+                      {row.title}
                     </td>
                     <td className="px-6 py-4 text-sm roboto-font font-medium text-slate-800">
-                      {row.skPpat}
+                      {row.theme}
                     </td>
                     <td className="px-6 py-4 text-sm roboto-font font-medium text-slate-800">
-                      {row.address}
-                    </td>
-                    <td className="px-6 py-4 text-sm roboto-font font-medium text-white">
-                      <Link
-                        href={"https://maps.app.goo.gl/6KVXLyfBN6C7Q3Ch8"}
-                        className="bg-blue-500 px-6 py-1 rounded-lg shadow-lg cursor-pointer"
-                      >
-                        <FontAwesomeIcon icon={faLocation} />
-                      </Link>
-                    </td>
-
-                    <td className="px-6 py-4 text-sm roboto-font text-slate-500">
-                      {new Date(row.createdAt).toLocaleDateString("id-ID", {
+                      {new Date(row.eventDate).toLocaleDateString("id-ID", {
                         day: "2-digit",
                         month: "long",
                         year: "numeric",
                       })}
                     </td>
+                    <td className="px-6 py-4 text-sm roboto-font font-medium text-slate-800">
+                      {row.imageUrl ? (
+                        <img
+                          src={`${API_BASE_URL}${row.imageUrl}`}
+                          alt={row.title}
+                          className="h-12 w-12 object-cover rounded-md border border-slate-200"
+                        />
+                      ) : (
+                        <span className="text-slate-400">No image</span>
+                      )}
+                    </td>
                     <td className="px-6 py-4 text-sm roboto-font text-slate-500">
-                      {new Date(row.updatedAt).toLocaleDateString("id-ID", {
+                      {new Date(row.createdAt).toLocaleDateString("id-ID", {
                         day: "2-digit",
                         month: "long",
                         year: "numeric",
@@ -207,7 +166,7 @@ const NotaryTabel = ({
           {/* Pagination footer */}
           <div className="flex items-center kanit-font justify-between px-6 py-3 bg-slate-50 border-t border-slate-200">
             <span className="text-sm text-slate-500">
-              Showing {notaries.length} of {pagination?.totalItems} Notaries
+              Showing {articles.length} of {pagination?.totalItems} Articles
             </span>
 
             <div className="flex items-center gap-1.5">
@@ -243,4 +202,4 @@ const NotaryTabel = ({
   );
 };
 
-export default NotaryTabel;
+export default ArticleTabel;

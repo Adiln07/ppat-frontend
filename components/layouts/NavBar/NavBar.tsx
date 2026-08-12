@@ -34,11 +34,11 @@ const NavBar = () => {
       label: "Article Management",
       logo: faNewspaper,
     },
-    {
-      href: "/admin/notaryByCity",
-      label: "Notary Data By City",
-      logo: faAddressCard,
-    },
+    // {
+    //   href: "/admin/notaryByCity",
+    //   label: "Notary Data By City",
+    //   logo: faAddressCard,
+    // },
   ];
   return (
     <div>

@@ -26,6 +26,7 @@ type Params = {
   name: string;
   pages: number;
   limit: number;
+  kotaId?: number | null;
 };
 
 type Pagination = {
