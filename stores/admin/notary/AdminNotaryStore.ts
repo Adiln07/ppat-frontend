@@ -2,6 +2,7 @@ import { create } from "zustand";
 import { adminNotaryApi } from "@/api/admin/Notary/AdminNotary";
 import { PopAlert } from "@/types/Alert";
 import { NotaryData } from "@/types/Notary";
+import { PublicNotary } from "@/api/public/PublicNotary";
 
 type Notary = {
   id: number;
@@ -13,6 +14,21 @@ type Notary = {
   imageUrl: string;
   createdAt: string;
   updatedAt: string;
+};
+
+type NotaryPublic = {
+  id: number;
+  name: string;
+  skPpat: string;
+  address: string;
+  mapUrl: string;
+  kotaId: number;
+  imageUrl: string;
+  createdAt: string;
+  updatedAt: string;
+  kota: {
+    name: string;
+  };
 };
 
 type City = {
@@ -38,7 +54,9 @@ type Pagination = {
 
 type AdminNotaryStore = {
   notaries: Notary[];
+  publicNotaries: NotaryPublic[];
   cities: City[];
+  publicCities: City[];
   pagination: Pagination | null;
   notaryById: Notary | null;
   notaryId: number;
@@ -54,7 +72,9 @@ type AdminNotaryStore = {
   isDeleteNotary: boolean;
 
   fetchGetAllCity: () => Promise<void>;
+  fetchGetAllPublicCity: () => Promise<void>;
   fetchGetAllNotary: (params: Params) => Promise<void>;
+  fetchGetAllPublicNotary: (params: Params) => Promise<void>;
   fetchNotaryById: (id: number) => Promise<void>;
   addNotary: (body: NotaryData) => Promise<void>;
   editNotary: (id: number, body: NotaryData) => Promise<void>;
@@ -73,7 +93,9 @@ type AdminNotaryStore = {
 
 export const useAdminNotaryStore = create<AdminNotaryStore>((set) => ({
   notaries: [],
+  publicNotaries: [],
   cities: [],
+  publicCities: [],
   pagination: null,
   notaryById: null,
   notaryId: 0,
@@ -103,12 +125,40 @@ export const useAdminNotaryStore = create<AdminNotaryStore>((set) => ({
       set({ loading: false });
     }
   },
+
+  fetchGetAllPublicCity: async () => {
+    try {
+      set({ loading: false, error: null });
+      const response = await PublicNotary.getAllCityFilter();
+      set({ publicCities: response.data || [] });
+    } catch (error) {
+      set({ loading: false, error: "Failed to Fetch All City" });
+    } finally {
+      set({ loading: false });
+    }
+  },
+
   fetchGetAllNotary: async (params: Params) => {
     try {
       set({ loading: true, error: null });
       const response = await adminNotaryApi.getAllNotaries(params);
       set({
         notaries: response.data || [],
+        pagination: response.pagination,
+      });
+    } catch (error) {
+      set({ loading: false, error: "Failed to Fetch Notaries" });
+    } finally {
+      set({ loading: false });
+    }
+  },
+
+  fetchGetAllPublicNotary: async (params: Params) => {
+    try {
+      set({ loading: true, error: null });
+      const response = await PublicNotary.getAllNotaries(params);
+      set({
+        publicNotaries: response.data || [],
         pagination: response.pagination,
       });
     } catch (error) {

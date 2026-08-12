@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { PopAlert } from "@/types/Alert";
 import { adminArticleApi } from "@/api/admin/article/AdminArticle";
+import { PublicArticle } from "@/api/public/PublicArticle";
 import { truncateSync } from "fs";
 import { ArticleData } from "@/types/Article";
 
@@ -30,8 +31,10 @@ type Pagination = {
 
 type AdminArticleStore = {
   articles: Article[];
+  publicArticles: Article[];
   pagination: Pagination | null;
   articleById: Article | null;
+  publicArticleById: Article | null;
   articleId: number;
   loading: boolean;
   error: string | null;
@@ -45,6 +48,7 @@ type AdminArticleStore = {
   isDeleteArticle: boolean;
 
   fetchGetAllArticle: (params: Params) => Promise<void>;
+  fetchGetAllPublicArticle: (params: Params) => Promise<void>;
   fetchGetArticleById: (id: number) => Promise<void>;
   addArticle: (body: ArticleData) => Promise<void>;
   uploadImage: (file: File) => Promise<string>;
@@ -64,8 +68,10 @@ type AdminArticleStore = {
 
 export const useAdminArticleStore = create<AdminArticleStore>((set) => ({
   articles: [],
+  publicArticles: [],
   pagination: null,
   articleById: null,
+  publicArticleById: null,
   articleId: 0,
   loading: false,
   error: null,
@@ -97,11 +103,38 @@ export const useAdminArticleStore = create<AdminArticleStore>((set) => ({
     }
   },
 
+  fetchGetAllPublicArticle: async (params: Params) => {
+    try {
+      set({ loading: false, error: null });
+      const response = await PublicArticle.getAllArticles(params);
+      set({
+        publicArticles: response.data || [],
+        pagination: response.pagination,
+      });
+    } catch {
+      set({ loading: false, error: "Failed to fetch all article" });
+    } finally {
+      set({ loading: false });
+    }
+  },
+
   fetchGetArticleById: async (id: number) => {
     try {
       set({ loading: false, error: null });
       const response = await adminArticleApi.getArticlesById(id);
       set({ articleById: response.data });
+    } catch {
+      set({ loading: false, error: "Failed to fetch article by id" });
+    } finally {
+      set({ loading: false });
+    }
+  },
+
+  fetchGetPublicArticleById: async (id: number) => {
+    try {
+      set({ loading: false, error: null });
+      const response = await PublicArticle.getArticlesById(id);
+      set({ publicArticleById: response.data });
     } catch {
       set({ loading: false, error: "Failed to fetch article by id" });
     } finally {

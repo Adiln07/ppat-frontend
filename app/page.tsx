@@ -1,7 +1,5 @@
-export default function Home() {
-  return (
-    <div>
-      <p>Hello World</p>
-    </div>
-  );
+import { redirect } from "next/navigation";
+
+export default function AdminIndexPage() {
+  redirect("/beranda");
 }
