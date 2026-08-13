@@ -126,12 +126,12 @@ const AboutUs = () => {
   return (
     <LandingPageLayout>
       <div className="">
-        <section className="md:px-24 bg-[#E1E3E4]">
-          <div className="py-20 flex flex-col gap-y-8">
-            <p className="text-center text-[#8F000D] font-extrabold text-3xl">
+        <section className="px-6 md:px-12 lg:px-24 bg-[#E1E3E4]">
+          <div className="py-10 md:py-20 flex flex-col gap-y-4 md:gap-y-8">
+            <p className="text-center text-[#8F000D] font-extrabold text-2xl md:text-3xl">
               Mengenal IPPAT Parepare
             </p>
-            <p className="text-justify [text-align-last:center] px-36 text-[#5A403E]">
+            <p className="text-justify md:[text-align-last:center] px-0 sm:px-10 md:px-36 text-[#5A403E] text-sm md:text-base">
               Ikatan Pejabat Pembuat Akta Tanah (IPPAT) Pengurus Daerah Parepare
               adalah wadah perhimpunan profesi PPAT yang berdedikasi untuk
               melayani masyarakat dalam bidang keperdataan khususnya pertanahan
@@ -139,32 +139,41 @@ const AboutUs = () => {
             </p>
           </div>
         </section>
-        <section className="md:px-24 ">
-          <div className="flex gap-x-8 py-20">
-            <div className="bg-[#E1E3E4] rounded-sm py-6 pl-6 flex flex-col gap-y-8 flex-1">
-              <FontAwesomeIcon
-                icon={faEye}
-                className="text-[#FFFFFF] p-3 bg-[#8F000D] rounded-sm"
-              />
-              <p className="text-[#8F000D] font-extrabold text-3xl">Visi</p>
-              <p className="text-[#5A403E] pr-10 text-justify">
+
+        <section className="px-6 md:px-12 lg:px-24">
+          <div className="flex flex-col lg:flex-row gap-y-6 lg:gap-y-0 gap-x-8 py-10 md:py-20">
+            <div className="bg-[#E1E3E4] rounded-sm p-6 lg:py-6 lg:pl-6 flex flex-col gap-y-6 lg:gap-y-8 flex-1">
+              <div>
+                <FontAwesomeIcon
+                  icon={faEye}
+                  className="text-[#FFFFFF] p-3 bg-[#8F000D] rounded-sm"
+                />
+              </div>
+              <p className="text-[#8F000D] font-extrabold text-2xl md:text-3xl">
+                Visi
+              </p>
+              <p className="text-[#5A403E] lg:pr-10 text-justify text-sm md:text-base">
                 Menjadi organisasi profesi PPAT yang bermartabat, profesional,
                 dan terpercaya di wilayah Parepare, serta berkontribusi aktif
                 dalam mewujudkan kepastian hukum hak atas tanah bagi seluruh
                 lapisan masyarakat.
               </p>
             </div>
-            <div className="bg-[#E1E3E4] rounded-sm py-6 pl-6 flex flex-col gap-y-8 flex-1">
-              <FontAwesomeIcon
-                icon={faFlagCheckered}
-                className="text-[#FFFFFF] p-3 bg-[#8F000D] rounded-sm"
-              />
-              <p className="text-[#8F000D] font-extrabold text-3xl">Misi</p>
-              <ul className="pr-10 flex flex-col gap-y-3 text-[#5A403E] text-justify">
+            <div className="bg-[#E1E3E4] rounded-sm p-6 lg:py-6 lg:pl-6 flex flex-col gap-y-6 lg:gap-y-8 flex-1">
+              <div>
+                <FontAwesomeIcon
+                  icon={faFlagCheckered}
+                  className="text-[#FFFFFF] p-3 bg-[#8F000D] rounded-sm"
+                />
+              </div>
+              <p className="text-[#8F000D] font-extrabold text-2xl md:text-3xl">
+                Misi
+              </p>
+              <ul className="lg:pr-10 flex flex-col gap-y-3 text-[#5A403E] text-justify text-sm md:text-base">
                 <li className="flex items-start gap-x-3">
                   <FontAwesomeIcon
                     icon={faCircleCheck}
-                    className="text-[#8F000D] pt-1"
+                    className="text-[#8F000D] pt-1 shrink-0"
                   />
                   <p>
                     Meningkatkan kualitas dan integritas anggota melalui
@@ -174,7 +183,7 @@ const AboutUs = () => {
                 <li className="flex items-start gap-x-3">
                   <FontAwesomeIcon
                     icon={faCircleCheck}
-                    className="text-[#8F000D] pt-1"
+                    className="text-[#8F000D] pt-1 shrink-0"
                   />
                   <p>
                     Menjalin sinergi dan kemitraan yang kuat dengan Badan
@@ -184,7 +193,7 @@ const AboutUs = () => {
                 <li className="flex items-start gap-x-3">
                   <FontAwesomeIcon
                     icon={faCircleCheck}
-                    className="text-[#8F000D] pt-1"
+                    className="text-[#8F000D] pt-1 shrink-0"
                   />
                   <p>
                     Memberikan edukasi dan pelayanan hukum pertanahan yang
@@ -195,26 +204,27 @@ const AboutUs = () => {
             </div>
           </div>
         </section>
-        <section className="md:px-24 ">
-          <div className="py-20">
-            <div className="mb-13">
-              <p className="text-[#8F000D] font-extrabold text-4xl">
+
+        <section className="px-6 md:px-12 lg:px-24">
+          <div className="py-10 md:py-20">
+            <div className="mb-8 md:mb-13 flex flex-col items-center md:items-start">
+              <p className="text-[#8F000D] font-extrabold text-2xl md:text-4xl text-center md:text-left">
                 Sejarah Organisasi
               </p>
-              <div className="bg-[#8F000D] h-2 mt-5 mb-4 w-25"></div>
+              <div className="bg-[#8F000D] h-1.5 md:h-2 mt-3 md:mt-5 mb-4 w-16 md:w-25"></div>
             </div>
 
-            <div className="flex gap-x-10">
-              <div>
+            <div className="flex flex-col lg:flex-row gap-y-8 lg:gap-y-0 lg:gap-x-10 items-center">
+              <div className="w-full lg:w-1/2">
                 <Image
                   src="/assets/aboutus1.jpeg"
                   alt=""
                   width={1000}
                   height={1000}
-                  className="rounded-md"
+                  className="rounded-md w-full h-auto object-cover"
                 />
               </div>
-              <div className="flex flex-col gap-y-3 items text-[#5A403E] text-justify">
+              <div className="w-full lg:w-1/2 flex flex-col gap-y-3 text-[#5A403E] text-justify text-sm md:text-base">
                 <span>
                   IPPAT Pengurus Daerah Parepare didirikan dengan semangat untuk
                   menyatukan visi dan misi para Pejabat Pembuat Akta Tanah yang
@@ -239,13 +249,14 @@ const AboutUs = () => {
             </div>
           </div>
         </section>
-        <section className="md:px-24 bg-[#F5F5F5]">
-          <div className="py-20">
-            <div className="flex flex-col gap-y-5 mb-6">
-              <p className="text-center text-[#8F000D] font-extrabold text-4xl">
+
+        <section className="px-6 md:px-12 lg:px-24 bg-[#F5F5F5]">
+          <div className="py-10 md:py-20">
+            <div className="flex flex-col gap-y-3 md:gap-y-5 mb-6 md:mb-10">
+              <p className="text-center text-[#8F000D] font-extrabold text-2xl md:text-4xl">
                 STRUKTUR ORGANISASI
               </p>
-              <p className="text-center text-[##5A403E] text-md font-extralight">
+              <p className="text-center text-[#5A403E] text-sm md:text-md font-extralight">
                 Susunan Pengurus Daerah IPPAT Parepare Periode 2024 - 2027
               </p>
             </div>
@@ -407,23 +418,24 @@ const AboutUs = () => {
             </div>
           </div>
         </section>
-        <section className="md:px-24">
-          <div className="py-27 flex flex-col gap-y-8">
+
+        <section className="px-6 md:px-12 lg:px-24">
+          <div className="py-12 md:py-27 flex flex-col gap-y-6 md:gap-y-8">
             <div>
-              <p className="text-[#8F000D] font-extrabold text-4xl text-center">
+              <p className="text-[#8F000D] font-extrabold text-2xl md:text-4xl text-center">
                 Wilayah Kerja
               </p>
             </div>
-            <div className="bg-[#E1E3E4] rounded-md flex justify-center items-center h-100">
-              <div className="bg-[#F8F9FA] p-5 flex flex-col items-center justify-center py-10 px-10 gap-y-5 rounded-md">
+            <div className="bg-[#E1E3E4] rounded-md flex justify-center items-center h-64 md:h-100 p-4 md:p-0">
+              <div className="bg-[#F8F9FA] p-6 md:p-10 flex flex-col items-center justify-center gap-y-3 md:gap-y-5 rounded-md text-center max-w-lg">
                 <FontAwesomeIcon
                   icon={faMapLocationDot}
-                  className="text-6xl text-[#8F000D]"
+                  className="text-4xl md:text-6xl text-[#8F000D]"
                 />
-                <p className="font-bold text-2xl text-[#191C1D]">
+                <p className="font-bold text-xl md:text-2xl text-[#191C1D]">
                   Kota Parepare
                 </p>
-                <p className="text-[#5A403E]">
+                <p className="text-[#5A403E] text-sm md:text-base">
                   Meliputi seluruh kecamatan dan kelurahan dalam wilayah hukum
                   administratif Kota Parepare.
                 </p>

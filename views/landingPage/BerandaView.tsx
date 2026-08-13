@@ -6,23 +6,15 @@ import Image from "next/image";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useAdminArticleStore } from "@/stores/admin/article/AdminArticleStore";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { API_BASE_URL } from "@/service/AxiosConfig";
 import { useAdminNotaryStore } from "@/stores/admin/notary/AdminNotaryStore";
 
-const BerandaView = ({
-  search,
-  setSearch,
-  page,
-  setPage,
-  limit,
-}: {
-  search: string;
-  setSearch: (value: string) => void;
-  page: number;
-  setPage: (value: number) => void;
-  limit: number;
-}) => {
+const BerandaView = () => {
+  const [search, setSearch] = useState("");
+  const [page, setPage] = useState(1);
+  const [limit, setLimit] = useState(10);
+
   const article = useAdminArticleStore((state) => state.publicArticles);
   const notary = useAdminNotaryStore((state) => state.publicNotaries);
 
