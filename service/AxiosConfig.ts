@@ -1,15 +1,11 @@
 import axios from "axios";
 
-export const API_BASE_URL = "http://localhost:5000";
+export const API_BASE_URL =
+  process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
 
 const AxiosConfig = axios.create({
-  baseURL:
-    typeof window !== "undefined"
-      ? `http://${window.location.hostname}:5000`
-      : "",
+  baseURL: API_BASE_URL,
 });
-
-// RequestInterceptor
 
 AxiosConfig.interceptors.request.use(
   (config) => {

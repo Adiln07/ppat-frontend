@@ -4,11 +4,26 @@ import LandingPageLayout from "@/components/layouts/LandingPageLayout/LandingPag
 import { useAdminNotaryStore } from "@/stores/admin/notary/AdminNotaryStore";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import ModalAddNotary from "@/components/admin/Notary/ModalAddNotary";
+import ModalDetailsNotary from "@/components/landingPage/ModalDetailsNotary";
 
 const NotaryDataView = () => {
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
+
+  const fetchGetAllPublicNotary = useAdminNotaryStore(
+    (state) => state.fetchGetAllPublicNotary,
+  );
+
+  const setPublicNotaryId = useAdminNotaryStore(
+    (state) => state.setPublicNotaryId,
+  );
+
+  // action untuk membuka modal (function, bukan state boolean)
+  const isDetailNotaryOpen = useAdminNotaryStore(
+    (state) => state.isDetailNotaryOpen,
+  );
 
   const [selectedCityId, setSelectedCityId] = useState<number | null>(null);
   const fetchGetAllPublicCity = useAdminNotaryStore(
@@ -24,13 +39,6 @@ const NotaryDataView = () => {
   const pagination = useAdminNotaryStore((state) => state.pagination);
 
   const notary = useAdminNotaryStore((state) => state.publicNotaries);
-  const fetchGetAllPublicNotary = useAdminNotaryStore(
-    (state) => state.fetchGetAllPublicNotary,
-  );
-
-  // useEffect(() => {
-  //   fetchGetAllPublicNotary({ name: search, pages: page, limit });
-  // }, [search, page, limit]);
 
   useEffect(() => {
     fetchGetAllPublicNotary({
@@ -40,6 +48,11 @@ const NotaryDataView = () => {
       kotaId: selectedCityId,
     });
   }, [search, page, limit, selectedCityId]);
+
+  const openModalDetail = (id: number) => {
+    isDetailNotaryOpen();
+    setPublicNotaryId(id);
+  };
 
   return (
     <LandingPageLayout>
@@ -120,12 +133,12 @@ const NotaryDataView = () => {
                       </span>
                     </td>
                     <td className="px-2 md:px-6 py-2 md:py-4 text-[7px] md:text-sm text-slate-800">
-                      <Link
-                        href=""
-                        className="border py-2 px-3 rounded-md border-[#8F000D] text-[#5A403E]"
+                      <button
+                        onClick={() => openModalDetail(row.id)}
+                        className="border py-2 px-3 rounded-md border-[#8F000D] text-[#5A403E] hover:bg-[#8F000D] hover:text-[#FFFF]"
                       >
                         Detail
-                      </Link>
+                      </button>
                     </td>
                   </tr>
                 ))}
@@ -167,6 +180,8 @@ const NotaryDataView = () => {
           </div>
         </div>
       </div>
+
+      <ModalDetailsNotary />
     </LandingPageLayout>
   );
 };

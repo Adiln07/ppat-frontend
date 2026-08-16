@@ -50,6 +50,7 @@ type AdminArticleStore = {
   fetchGetAllArticle: (params: Params) => Promise<void>;
   fetchGetAllPublicArticle: (params: Params) => Promise<void>;
   fetchGetArticleById: (id: number) => Promise<void>;
+  fetchGetPublicArticleById: (id: number) => Promise<void>;
   addArticle: (body: ArticleData) => Promise<void>;
   uploadImage: (file: File) => Promise<string>;
   editArticle: (id: number, body: ArticleData) => Promise<void>;

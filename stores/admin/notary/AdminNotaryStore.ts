@@ -60,6 +60,8 @@ type AdminNotaryStore = {
   pagination: Pagination | null;
   notaryById: Notary | null;
   notaryId: number;
+  publicNotaryById: Notary | null;
+  publicNotaryId: number;
   loading: boolean;
   error: string | null;
   popAlert: PopAlert;
@@ -71,16 +73,23 @@ type AdminNotaryStore = {
   isEditNotary: boolean;
   isDeleteNotary: boolean;
 
+  isDetailNotary: boolean;
+
   fetchGetAllCity: () => Promise<void>;
   fetchGetAllPublicCity: () => Promise<void>;
   fetchGetAllNotary: (params: Params) => Promise<void>;
   fetchGetAllPublicNotary: (params: Params) => Promise<void>;
+
   fetchNotaryById: (id: number) => Promise<void>;
+
+  fetchPublicNotaryById: (id: number) => Promise<void>;
+
   addNotary: (body: NotaryData) => Promise<void>;
   editNotary: (id: number, body: NotaryData) => Promise<void>;
   deleteNotary: (id: number) => Promise<void>;
 
   setNotaryId: (id: number) => void;
+  setPublicNotaryId: (id: number) => void;
 
   isAddNotaryOpen: () => void;
   isAddNotaryClose: () => void;
@@ -88,6 +97,10 @@ type AdminNotaryStore = {
   isEditNotaryClose: () => void;
   isDeleteNotaryOpen: () => void;
   iseDeleteNotaryClose: () => void;
+
+  isDetailNotaryOpen: () => void;
+  isDetailNotaryClose: () => void;
+
   popAlertVisibled: () => void;
 };
 
@@ -97,8 +110,13 @@ export const useAdminNotaryStore = create<AdminNotaryStore>((set) => ({
   cities: [],
   publicCities: [],
   pagination: null,
+
+  publicNotaryById: null,
+  publicNotaryId: 0,
+
   notaryById: null,
   notaryId: 0,
+
   loading: false,
   error: null,
   popAlert: {
@@ -113,6 +131,8 @@ export const useAdminNotaryStore = create<AdminNotaryStore>((set) => ({
   isAddNotary: false,
   isEditNotary: false,
   isDeleteNotary: false,
+
+  isDetailNotary: false,
 
   fetchGetAllCity: async () => {
     try {
@@ -173,6 +193,18 @@ export const useAdminNotaryStore = create<AdminNotaryStore>((set) => ({
       set({ loading: true, error: null });
       const response = await adminNotaryApi.getNotaryById(id);
       set({ notaryById: response.data });
+    } catch (error) {
+      set({ error: "Failed To Fetch Notary By Id" });
+    } finally {
+      set({ loading: false });
+    }
+  },
+
+  fetchPublicNotaryById: async (id: number) => {
+    try {
+      set({ loading: true, error: null });
+      const response = await PublicNotary.getNotaryById(id);
+      set({ publicNotaryById: response.data });
     } catch (error) {
       set({ error: "Failed To Fetch Notary By Id" });
     } finally {
@@ -262,6 +294,10 @@ export const useAdminNotaryStore = create<AdminNotaryStore>((set) => ({
     set({ notaryId: id });
   },
 
+  setPublicNotaryId: (id: number) => {
+    set({ publicNotaryId: id });
+  },
+
   isAddNotaryOpen: () => {
     set({ isAddNotary: true });
   },
@@ -280,6 +316,14 @@ export const useAdminNotaryStore = create<AdminNotaryStore>((set) => ({
   iseDeleteNotaryClose() {
     set({ isDeleteNotary: false });
   },
+
+  isDetailNotaryOpen: () => {
+    set({ isDetailNotary: true });
+  },
+  isDetailNotaryClose: () => {
+    set({ isDetailNotary: false });
+  },
+
   popAlertVisibled: () => {
     set((state) => ({
       popAlert: {

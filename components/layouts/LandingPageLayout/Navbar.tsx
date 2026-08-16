@@ -67,21 +67,21 @@ const Navbar = () => {
         <div className="hidden md:flex items-center gap-x-10">
           <ul className="flex gap-x-10 text-lg">
             <li>
-              <a href="">Home</a>
+              <a href="/">Home</a>
             </li>
             <li>
-              <a href="">About us</a>
+              <a href="/aboutus">About us</a>
             </li>
             <li>
-              <a href="">News</a>
+              <a href="/news">News</a>
             </li>
             <li>
-              <a href="">Notary Data</a>
+              <a href="/notarydata">Notary Data</a>
             </li>
           </ul>
           <Link
             href=""
-            className="px-7 py-2 bg-[#8F000D] rounded-xs text-lg text-[#FFF6F6]"
+            className="px-7 py-2 bg-[#8F000D] rounded-md text-lg text-[#FFF6F6]"
           >
             Contact Us
           </Link>
@@ -92,16 +92,16 @@ const Navbar = () => {
         <div className="md:hidden flex flex-col items-center gap-y-4 pb-6 pt-2">
           <ul className="flex flex-col items-center gap-y-4 text-lg">
             <li>
-              <a href="">Home</a>
+              <a href="/">Home</a>
             </li>
             <li>
-              <a href="">About us</a>
+              <a href="/aboutus">About us</a>
             </li>
             <li>
               <a href="">News</a>
             </li>
             <li>
-              <a href="">Notary Data</a>
+              <a href=".notarydata">Notary Data</a>
             </li>
           </ul>
           <Link
