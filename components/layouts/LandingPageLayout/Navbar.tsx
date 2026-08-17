@@ -80,8 +80,10 @@ const Navbar = () => {
             </li>
           </ul>
           <Link
-            href=""
-            className="px-7 py-2 bg-[#8F000D] rounded-md text-lg text-[#FFF6F6]"
+            href="https://wa.me/6285696817000"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-7 py-2 bg-[#8F000D] rounded-xs text-lg text-[#FFF6F6] mt-2"
           >
             Contact Us
           </Link>
