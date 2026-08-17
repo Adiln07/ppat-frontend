@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight, faCalendar } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
 import { API_BASE_URL } from "@/service/AxiosConfig";
+import Link from "next/link";
 
 const badgeColors = [
   "bg-red-100 text-[#8F000D]",
@@ -73,9 +74,10 @@ const DetailNewsView = ({ id }: { id: number }) => {
             {publicArticleById?.title}
           </p>
         </div>
-        <div className="flex gap-x-10">
+        <div className="flex gap-x-10 items-start">
           {/* main left */}
-          <div className="py-10">
+
+          <div className="py-10 w-2/3">
             {/* tgl dan jenis */}
             <div className="flex gap-x-5 items-center">
               <p
@@ -111,7 +113,7 @@ const DetailNewsView = ({ id }: { id: number }) => {
                 />
               </div>
 
-              <p className="text-[#191C1D] text-justify">
+              <p className="text-[#191C1D] text-justify whitespace-pre-line">
                 {publicArticleById?.description}
               </p>
             </div>
@@ -119,13 +121,19 @@ const DetailNewsView = ({ id }: { id: number }) => {
 
           {/* main right */}
 
-          <div>
+          <div className="w-1/3 flex flex-col gap-y-6 border border-[#E2BEBA] rounded-md p-4">
             <div>
-              <p>Berita Terkait</p>
+              <p className="font-bold text-xl text-[#191C1D] border-b border-[#E2BEBA] pb-4">
+                Berita Lainnya
+              </p>
             </div>
             {articles.slice(0, 3).map((row, index) => (
-              <div className=" gap-y-4" key={row.id}>
-                <div>
+              <Link
+                href={`/news/${articles[index].id}`}
+                className="flex gap-x-3"
+                key={row.id}
+              >
+                <div className="shrink-0">
                   <Image
                     src={
                       articles[index]?.imageUrl
@@ -134,17 +142,23 @@ const DetailNewsView = ({ id }: { id: number }) => {
                     }
                     alt="gambar berita"
                     unoptimized
-                    width={400}
-                    height={300}
-                    className="w-full h-auto"
+                    width={80}
+                    height={80}
+                    className="w-20 h-20 object-cover rounded-md"
                   />
                 </div>
-                <div>
-                  <p>{articles[index]?.theme}</p>
-                  <p>{articles[index]?.title}</p>
-                  <p>{formatDate(articles[index]?.eventDate)}</p>
+                <div className="flex flex-col gap-y-1">
+                  <p className="text-sm font-semibold text-[#8F000D]">
+                    {articles[index]?.theme}
+                  </p>
+                  <p className="font-bold text-sm text-[#191C1D] line-clamp-2">
+                    {articles[index]?.title}
+                  </p>
+                  <p className="text-xs text-slate-500">
+                    {formatDate(articles[index]?.eventDate)}
+                  </p>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

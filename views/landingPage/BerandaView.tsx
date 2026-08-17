@@ -51,13 +51,13 @@ const BerandaView = () => {
             </div>
             <div className="flex gap-x-2 md:gap-x-4 mt-3 md:mt-8">
               <Link
-                href=""
+                href="/beranda"
                 className="bg-[#8F000D] px-2 md:px-4 py-1.5 md:py-3 rounded-sm text-white font-semibold text-[7px] md:text-base"
               >
                 Jelajahi Profil
               </Link>
               <Link
-                href=""
+                href="/news"
                 className="border md:border-2 border-[#8F000D] px-2 md:px-4 py-1.5 md:py-3 rounded-sm font-semibold text-[#8F000D] text-[7px] md:text-base"
               >
                 Berita Terkini
@@ -99,7 +99,10 @@ const BerandaView = () => {
               </p>
             </div>
             <div className="mt-2 md:mt-5 flex">
-              <Link href="" className="flex items-center gap-x-1 md:gap-x-2">
+              <Link
+                href="/aboutus"
+                className="flex items-center gap-x-1 md:gap-x-2"
+              >
                 <p className="text-[#8F000D] font-semibold text-[7px] md:text-base">
                   Lihat Selengkapnya
                 </p>
@@ -147,7 +150,7 @@ const BerandaView = () => {
 
                   <div className="flex justify-end mt-auto pt-1 md:pt-3">
                     <Link
-                      href=""
+                      href={`/news/${row.id}`}
                       className="text-[#8F000D] text-[6px] md:text-sm font-semibold"
                     >
                       Selengkapnya
@@ -159,7 +162,7 @@ const BerandaView = () => {
           </div>
           <div className="text-center mt-4 md:mt-10 mb-2 md:mb-6">
             <Link
-              href=""
+              href="/news"
               className="bg-[#8F000D] px-2 md:px-4 py-1.5 md:py-3 rounded-sm text-white font-semibold text-[7px] md:text-base"
             >
               Lihat Semua Berita
@@ -219,7 +222,7 @@ const BerandaView = () => {
           </div>
           <div className="flex justify-center pt-4 md:pt-5">
             <Link
-              href=""
+              href="/notarydata"
               className="bg-[#8F000D] px-2 md:px-4 py-1.5 md:py-3 rounded-sm text-white font-semibold text-[7px] md:text-base"
             >
               Lihat Seluruh Data Notaris

@@ -141,7 +141,10 @@ const AboutUs = () => {
         </section>
 
         <section className="px-6 md:px-12 lg:px-24">
-          <div className="flex flex-col lg:flex-row gap-y-6 lg:gap-y-0 gap-x-8 py-10 md:py-20">
+          <div
+            id="visimisi"
+            className="flex flex-col lg:flex-row gap-y-6 lg:gap-y-0 gap-x-8 py-10 md:py-20"
+          >
             <div className="bg-[#E1E3E4] rounded-sm p-6 lg:py-6 lg:pl-6 flex flex-col gap-y-6 lg:gap-y-8 flex-1">
               <div>
                 <FontAwesomeIcon
@@ -250,7 +253,10 @@ const AboutUs = () => {
           </div>
         </section>
 
-        <section className="px-6 md:px-12 lg:px-24 bg-[#F5F5F5]">
+        <section
+          id="strukturorganisasi"
+          className="px-6 md:px-12 lg:px-24 bg-[#F5F5F5]"
+        >
           <div className="py-10 md:py-20">
             <div className="flex flex-col gap-y-3 md:gap-y-5 mb-6 md:mb-10">
               <p className="text-center text-[#8F000D] font-extrabold text-2xl md:text-4xl">

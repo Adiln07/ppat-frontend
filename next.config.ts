@@ -6,6 +6,11 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "api.ppatpengdapareparedst.web.id",
+
+        // protocol: "http",
+        // hostname: "localhost",
+        // port: "5000",
+
         pathname: "/uploads/**",
       },
     ],

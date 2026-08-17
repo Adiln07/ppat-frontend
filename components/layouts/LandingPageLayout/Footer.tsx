@@ -72,13 +72,13 @@ const Footer = () => {
           <p className="font-bold">Organization Info</p>
           <ul className="text-[#5A403E] flex flex-col gap-y-2 text-sm md:text-base">
             <li>
-              <a href="">Tentang kami</a>
+              <a href="/aboutus">Tentang kami</a>
             </li>
             <li>
-              <a href="">Struktur Pengurus</a>
+              <a href="/aboutus#strukturorganisasi">Struktur Pengurus</a>
             </li>
             <li>
-              <a href="">Visi & Misi</a>
+              <a href="/aboutus#visimisi">Visi & Misi</a>
             </li>
           </ul>
         </div>
@@ -86,10 +86,10 @@ const Footer = () => {
           <p className="font-bold">Quick Links</p>
           <ul className="text-[#5A403E] flex flex-col gap-y-2 text-sm md:text-base">
             <li>
-              <a href="">Berita</a>
+              <a href="/news">Berita</a>
             </li>
             <li>
-              <a href="">Data Notaris</a>
+              <a href="/notarydata">Data Notaris</a>
             </li>
           </ul>
         </div>

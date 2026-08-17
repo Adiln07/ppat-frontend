@@ -92,16 +92,16 @@ const Navbar = () => {
         <div className="md:hidden flex flex-col items-center gap-y-4 pb-6 pt-2">
           <ul className="flex flex-col items-center gap-y-4 text-lg">
             <li>
-              <a href="/">Home</a>
+              <a href="/beranda">Home</a>
             </li>
             <li>
               <a href="/aboutus">About us</a>
             </li>
             <li>
-              <a href="">News</a>
+              <a href="/news">News</a>
             </li>
             <li>
-              <a href=".notarydata">Notary Data</a>
+              <a href="/notarydata">Notary Data</a>
             </li>
           </ul>
           <Link

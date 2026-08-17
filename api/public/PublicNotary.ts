@@ -17,7 +17,7 @@ export const PublicNotary = {
 
   getNotaryById: async (id: number) => {
     try {
-      const response = await AxiosConfig.get(`/notaries/${id}`);
+      const response = await AxiosConfig.get(`/public/notary/${id}`);
       return response.data;
     } catch (error) {
       throw new Error("Failed Get Notary By Id");
@@ -26,7 +26,7 @@ export const PublicNotary = {
 
   getAllCityFilter: async () => {
     try {
-      const response = await AxiosConfig.get("/cities");
+      const response = await AxiosConfig.get("/public/cities");
       return response.data;
     } catch (error) {
       throw new Error("Failed Get All City");
