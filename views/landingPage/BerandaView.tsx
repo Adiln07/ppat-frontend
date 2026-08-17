@@ -52,13 +52,13 @@ const BerandaView = () => {
             <div className="flex gap-x-2 md:gap-x-4 mt-3 md:mt-8">
               <Link
                 href="/beranda"
-                className="bg-[#8F000D] px-2 md:px-4 py-1.5 md:py-3 rounded-sm text-white font-semibold text-[7px] md:text-base"
+                className="bg-[#8F000D] px-2 md:px-4 py-1.5 md:py-3 rounded-sm text-white font-semibold text-[7px] md:text-base hover:bg-[#550209] hover:text-[#FFFF]"
               >
                 Jelajahi Profil
               </Link>
               <Link
                 href="/news"
-                className="border md:border-2 border-[#8F000D] px-2 md:px-4 py-1.5 md:py-3 rounded-sm font-semibold text-[#8F000D] text-[7px] md:text-base"
+                className="border md:border-2 border-[#8F000D] px-2 md:px-4 py-1.5 md:py-3 rounded-sm font-semibold text-[#8F000D] text-[7px] md:text-base hover:bg-[#fff2f2]"
               >
                 Berita Terkini
               </Link>
@@ -123,7 +123,8 @@ const BerandaView = () => {
           </div>
           <div className="grid grid-cols-3 gap-2 md:gap-6 max-w-4xl mx-auto w-full">
             {article.slice(0, 3).map((row) => (
-              <div
+              <Link
+                href={`/news/${row.id}`}
                 key={row.id}
                 className="w-full h-full flex flex-col rounded-md md:rounded-lg border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
               >
@@ -149,21 +150,18 @@ const BerandaView = () => {
                   </p>
 
                   <div className="flex justify-end mt-auto pt-1 md:pt-3">
-                    <Link
-                      href={`/news/${row.id}`}
-                      className="text-[#8F000D] text-[6px] md:text-sm font-semibold"
-                    >
+                    <span className="text-[#8F000D] text-[6px] md:text-sm font-semibold">
                       Selengkapnya
-                    </Link>
+                    </span>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
           <div className="text-center mt-4 md:mt-10 mb-2 md:mb-6">
             <Link
               href="/news"
-              className="bg-[#8F000D] px-2 md:px-4 py-1.5 md:py-3 rounded-sm text-white font-semibold text-[7px] md:text-base"
+              className="bg-[#8F000D] px-2 md:px-4 py-1.5 md:py-3 rounded-sm text-white font-semibold text-[7px] md:text-base hover:bg-[#550209] hover:text-[#FFFF]"
             >
               Lihat Semua Berita
             </Link>
@@ -223,7 +221,7 @@ const BerandaView = () => {
           <div className="flex justify-center pt-4 md:pt-5">
             <Link
               href="/notarydata"
-              className="bg-[#8F000D] px-2 md:px-4 py-1.5 md:py-3 rounded-sm text-white font-semibold text-[7px] md:text-base"
+              className="bg-[#8F000D] hover:bg-[#550209] hover:text-[#FFFF] px-2 md:px-4 py-1.5 md:py-3 rounded-sm text-white font-semibold text-[7px] md:text-base"
             >
               Lihat Seluruh Data Notaris
             </Link>

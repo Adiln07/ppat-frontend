@@ -61,16 +61,15 @@ const NewsView = () => {
             const isFirst = index === 0;
 
             return (
-              <div
+              <Link
+                href={`/news/${article.id}`}
                 key={article.id}
-                // Ubah md:col-span-2 menjadi col-span-2 agar artikel pertama selalu mengambil 2 kolom
                 className={`bg-white border border-gray-100 rounded-lg md:rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col ${
                   isFirst ? "col-span-2" : "col-span-1"
                 }`}
               >
                 {/* Image Section */}
                 <div
-                  // Sesuaikan tinggi gambar secara proporsional dari mobile hingga laptop
                   className={`relative w-full ${
                     isFirst
                       ? "h-[140px] sm:h-[220px] md:h-[350px]"
@@ -92,7 +91,6 @@ const NewsView = () => {
                 </div>
 
                 {/* Content Section */}
-                {/* Padding dikecilkan di layar mobile */}
                 <div
                   className={`flex flex-col grow ${
                     isFirst ? "p-3 sm:p-5 md:p-8" : "p-2 sm:p-4 md:p-5"
@@ -100,7 +98,6 @@ const NewsView = () => {
                 >
                   <div className="flex items-center gap-1 md:gap-3 mb-1.5 md:mb-3 flex-wrap">
                     <span
-                      // Badge size dikecilkan
                       className={`${
                         badgeColors[index % badgeColors.length]
                       } px-1.5 py-0.5 md:px-2.5 md:py-1 rounded text-[8px] sm:text-[10px] md:text-xs font-bold tracking-wide uppercase`}
@@ -117,7 +114,6 @@ const NewsView = () => {
                   </div>
 
                   <h3
-                    // Ukuran judul dikecilkan untuk mobile
                     className={`font-bold text-gray-900 mb-1 md:mb-3 leading-snug line-clamp-2 ${
                       isFirst
                         ? "text-sm sm:text-xl md:text-3xl"
@@ -128,7 +124,6 @@ const NewsView = () => {
                   </h3>
 
                   <p
-                    // Ukuran deskripsi dikecilkan untuk mobile
                     className={`text-gray-600 ${
                       isFirst
                         ? "mb-2 md:mb-6 text-[10px] sm:text-sm md:text-base line-clamp-2 md:line-clamp-3"
@@ -138,18 +133,15 @@ const NewsView = () => {
                     {article.description}
                   </p>
 
-                  <Link
-                    href={`/news/${article.id}`}
-                    className="text-[#8F000D] font-bold text-[8px] sm:text-[10px] md:text-sm hover:text-red-800 transition-colors flex items-center gap-1 md:gap-2 mt-auto"
-                  >
+                  <span className="text-[#8F000D] font-bold text-[8px] sm:text-[10px] md:text-sm hover:text-red-800 transition-colors flex items-center gap-1 md:gap-2 mt-auto">
                     Read More{" "}
                     <FontAwesomeIcon
                       icon={faArrowRight}
                       className="w-2 h-2 md:w-3 md:h-3"
                     />
-                  </Link>
+                  </span>
                 </div>
-              </div>
+              </Link>
             );
           })}
         </div>
