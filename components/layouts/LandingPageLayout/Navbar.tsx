@@ -21,11 +21,17 @@ const Navbar = () => {
   return (
     <div className="w-full border-b-2 border-[#8F000D] kanit-font bg-[#F8F9FA]">
       <div className="flex w-full justify-between items-center px-5 md:px-10 py-5">
-        <div>
-          <p className="font-bold text-xl md:text-2xl text-[#8F000D]">
-            IPPAT Parepare
-          </p>
-        </div>
+        <Link href="/beranda" className="group block">
+          <div className="border-l-4 border-[#8F000D] pl-3 py-0.5 group-hover:border-[#70020b] transition-colors">
+            <p className="font-extrabold text-xl md:text-2xl text-[#8F000D] tracking-tight leading-snug group-hover:opacity-80 transition-opacity">
+              Pengurus Daerah Parepare dan Sekitarnya
+            </p>
+            <p className="text-xs md:text-sm font-medium uppercase tracking-wider text-[#69504e] mt-1">
+              Ikatan Pejabat Pembuat Akta Tanah{" "}
+              <span className="font-bold text-[#8F000D]">(IPPAT)</span>
+            </p>
+          </div>
+        </Link>
 
         <div className="md:hidden">
           <button
