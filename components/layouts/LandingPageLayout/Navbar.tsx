@@ -8,7 +8,7 @@ const navItems = [
   { href: "/beranda", label: "Beranda" },
   { href: "/aboutus", label: "Tentang Kami" },
   { href: "/news", label: "Berita" },
-  { href: "/notarydata", label: "Data Notaris" },
+  { href: "/notarydata", label: "Data PPAT" },
 ];
 
 const Navbar = () => {

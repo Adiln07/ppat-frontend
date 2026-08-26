@@ -61,11 +61,11 @@ const NotaryDataView = () => {
         <div className="flex flex-row py-6 md:py-10 justify-between items-center gap-2 md:gap-4">
           <div className="flex flex-col gap-y-1 md:gap-y-3 w-2/3 md:w-auto">
             <p className="text-[#8F000D] font-extrabold text-sm sm:text-2xl md:text-4xl text-left">
-              Data Notaris / PPAT
+              Data PPAT
             </p>
             <p className="text-[#5A403E] text-[8px] sm:text-sm md:text-base leading-snug">
-              Direktori resmi Pejabat Pembuat Akta Tanah Kota Parepare dan
-              sekitarnya.
+              Direktori resmi Ikatan Pejabat Pembuat Akta Tanah Kota Parepare
+              dan sekitarnya.
             </p>
           </div>
           <div className="flex flex-col md:flex-row items-end md:items-center gap-1 md:gap-x-3 shrink-0 w-1/3 md:w-auto">

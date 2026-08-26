@@ -4,7 +4,12 @@ import { useAdminNotaryStore } from "@/stores/admin/notary/AdminNotaryStore";
 import { useEffect } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faIdCard, faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import {
+  faIdCard,
+  faLocationDot,
+  faMapLocationDot,
+  faArrowUpRightFromSquare,
+} from "@fortawesome/free-solid-svg-icons";
 
 const ModalDetailsNotary = () => {
   const isDetailNotaryClose = useAdminNotaryStore(
@@ -26,7 +31,6 @@ const ModalDetailsNotary = () => {
     }
   }, [publicNotaryId, isDetailNotary]);
 
-  // WAJIB: jangan render apapun kalau modal belum dibuka
   if (!isDetailNotary) return null;
 
   return (
@@ -75,10 +79,36 @@ const ModalDetailsNotary = () => {
                 Alamat Kantor
               </p>
             </div>
+
             <div className="px-5 py-4 bg-white">
               <p className="text-[#5A403E] text-sm md:text-base leading-relaxed">
                 {publicNotaryById?.address || "Alamat belum tersedia."}
               </p>
+
+              {publicNotaryById?.mapUrl && (
+                <a
+                  href={publicNotaryById.mapUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group mt-4 flex items-center justify-between gap-3 rounded-lg border border-[#E1E3E4] bg-gradient-to-r from-slate-50 to-white px-4 py-3 transition-all hover:border-[#8F000D]/30 hover:shadow-md"
+                >
+                  <div className="flex items-center gap-x-3">
+                    <div className="w-9 h-9 rounded-full bg-[#8F000D]/10 flex items-center justify-center text-[#8F000D] group-hover:bg-[#8F000D] group-hover:text-white transition-colors">
+                      <FontAwesomeIcon
+                        icon={faMapLocationDot}
+                        className="w-4 h-4"
+                      />
+                    </div>
+                    <span className="text-sm font-semibold text-[#191C1D]">
+                      Buka di Google Maps
+                    </span>
+                  </div>
+                  <FontAwesomeIcon
+                    icon={faArrowUpRightFromSquare}
+                    className="w-3.5 h-3.5 text-gray-400 group-hover:text-[#8F000D] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"
+                  />
+                </a>
+              )}
             </div>
           </div>
         </div>

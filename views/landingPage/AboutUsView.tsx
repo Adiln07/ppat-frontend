@@ -442,8 +442,9 @@ const AboutUs = () => {
                   Kota Parepare
                 </p>
                 <p className="text-[#5A403E] text-sm md:text-base">
-                  Meliputi seluruh kecamatan dan kelurahan dalam wilayah hukum
-                  administratif Kota Parepare.
+                  Meliputi Kab. Barru, Kota Parepare, Kab. Sidenreng Rappang,
+                  Kab. Pinrang, Kab. Enrekang, Kab. Tana Toraja, Kab. Toraja
+                  Utara.
                 </p>
               </div>
             </div>
