@@ -28,7 +28,7 @@ const NewsView = () => {
   );
 
   useEffect(() => {
-    fetchGetAllPublicArticle({ name: search, pages: page, limit });
+    fetchGetAllPublicArticle({ name: search, page: page, limit });
   }, [search, page, limit]);
 
   const formatDate = (date: string) => {

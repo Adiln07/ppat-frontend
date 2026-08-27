@@ -43,7 +43,7 @@ const NotaryDataView = () => {
   useEffect(() => {
     fetchGetAllPublicNotary({
       name: search,
-      pages: page,
+      page: page,
       limit,
       kotaId: selectedCityId,
     });
@@ -158,7 +158,11 @@ const NotaryDataView = () => {
             </span>
 
             <div className="flex items-center gap-1 md:gap-1.5">
-              <button className="px-1.5 py-1 md:px-3 md:py-1.5 text-[8px] sm:text-xs md:text-sm font-medium rounded md:rounded-md border border-slate-200 text-slate-600 bg-white hover:bg-slate-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors">
+              <button
+                onClick={() => setPage(Math.max(page - 1, 1))}
+                disabled={page <= 1}
+                className="px-1.5 py-1 md:px-3 md:py-1.5 text-[8px] sm:text-xs md:text-sm font-medium rounded md:rounded-md border border-slate-200 text-slate-600 bg-white hover:bg-slate-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              >
                 Prev
               </button>
 
@@ -179,7 +183,13 @@ const NotaryDataView = () => {
                 </button>
               ))}
 
-              <button className="px-1.5 py-1 md:px-3 md:py-1.5 text-[8px] sm:text-xs md:text-sm font-medium rounded md:rounded-md border border-slate-200 text-slate-600 bg-white hover:bg-slate-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors">
+              <button
+                onClick={() =>
+                  setPage(Math.min(page + 1, pagination?.totalPages ?? 1))
+                }
+                disabled={page >= (pagination?.totalPages ?? 1)}
+                className="px-1.5 py-1 md:px-3 md:py-1.5 text-[8px] sm:text-xs md:text-sm font-medium rounded md:rounded-md border border-slate-200 text-slate-600 bg-white hover:bg-slate-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              >
                 Next
               </button>
             </div>

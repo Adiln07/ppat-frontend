@@ -13,7 +13,7 @@ export const adminNotaryApi = {
 
   getAllNotaries: async (params?: {
     name?: string;
-    pages?: number;
+    page?: number;
     limit?: number;
     kotaId?: number | null;
   }) => {

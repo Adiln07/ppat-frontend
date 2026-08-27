@@ -28,7 +28,7 @@ const DetailNewsView = ({ id }: { id: number }) => {
   );
 
   useEffect(() => {
-    fetchGetAllPublicArticle({ name: search, pages: page, limit });
+    fetchGetAllPublicArticle({ name: search, page: page, limit });
   }, [search, page, limit]);
 
   const fetchGetPublicArticleById = useAdminArticleStore(

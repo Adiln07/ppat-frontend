@@ -3,7 +3,7 @@ import AxiosConfig from "@/service/AxiosConfig";
 export const adminCityApi = {
   getAllCityApi: async (params?: {
     name?: string;
-    pages?: number;
+    page?: number;
     limit?: number;
   }) => {
     try {

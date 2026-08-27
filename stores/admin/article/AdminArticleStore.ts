@@ -18,7 +18,7 @@ type Article = {
 
 type Params = {
   name: string;
-  pages: number;
+  page: number;
   limit: number;
 };
 

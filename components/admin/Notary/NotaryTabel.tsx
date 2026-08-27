@@ -54,7 +54,7 @@ const NotaryTabel = ({
   useEffect(() => {
     fetchGetAllNotary({
       name: search,
-      pages: page,
+      page: page,
       limit,
       kotaId: selectedCityId,
     });
@@ -147,7 +147,7 @@ const NotaryTabel = ({
                     className="hover:bg-slate-50 transition-colors"
                   >
                     <td className="px-6 py-4 text-sm roboto-font text-slate-500">
-                      {i + 1}
+                      {(page - 1) * limit + i + 1}
                     </td>
 
                     <td className="px-6 py-4 text-sm roboto-font font-medium text-slate-800">
@@ -211,7 +211,11 @@ const NotaryTabel = ({
             </span>
 
             <div className="flex items-center gap-1.5">
-              <button className="px-3 py-1.5 text-sm font-medium rounded-md border border-slate-200 text-slate-600 bg-white hover:bg-slate-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors">
+              <button
+                onClick={() => setPage(Math.max(page - 1, 1))}
+                disabled={page <= 1}
+                className="px-3 py-1.5 text-sm font-medium rounded-md border border-slate-200 text-slate-600 bg-white hover:bg-slate-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              >
                 Previous
               </button>
 
@@ -232,7 +236,13 @@ const NotaryTabel = ({
                 </button>
               ))}
 
-              <button className="px-3 py-1.5 text-sm font-medium rounded-md border border-slate-200 text-slate-600 bg-white hover:bg-slate-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors">
+              <button
+                onClick={() =>
+                  setPage(Math.min(page + 1, pagination?.totalPages ?? 1))
+                }
+                disabled={page >= (pagination?.totalPages ?? 1)}
+                className="px-3 py-1.5 text-sm font-medium rounded-md border border-slate-200 text-slate-600 bg-white hover:bg-slate-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              >
                 Next
               </button>
             </div>

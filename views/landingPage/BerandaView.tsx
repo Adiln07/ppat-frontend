@@ -27,11 +27,11 @@ const BerandaView = () => {
   );
 
   useEffect(() => {
-    FetchGetAllPublicNotary({ name: search, pages: page, limit });
+    FetchGetAllPublicNotary({ name: search, page: page, limit });
   }, [search, page, limit]);
 
   useEffect(() => {
-    FetchGetAllPublicArticle({ name: search, pages: page, limit });
+    FetchGetAllPublicArticle({ name: search, page: page, limit });
   }, [search, page, limit]);
 
   return (

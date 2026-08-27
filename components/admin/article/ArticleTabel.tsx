@@ -38,7 +38,7 @@ const ArticleTabel = ({
   );
 
   useEffect(() => {
-    fetchGetAllArticle({ name: search, pages: page, limit });
+    fetchGetAllArticle({ name: search, page: page, limit });
   }, [search, page, limit]);
 
   const setArticleId = useAdminArticleStore((state) => state.setArticleId);
@@ -170,7 +170,11 @@ const ArticleTabel = ({
             </span>
 
             <div className="flex items-center gap-1.5">
-              <button className="px-3 py-1.5 text-sm font-medium rounded-md border border-slate-200 text-slate-600 bg-white hover:bg-slate-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors">
+              <button
+                onClick={() => setPage(Math.max(page - 1, 1))}
+                disabled={page <= 1}
+                className="px-3 py-1.5 text-sm font-medium rounded-md border border-slate-200 text-slate-600 bg-white hover:bg-slate-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              >
                 Previous
               </button>
 
@@ -191,7 +195,13 @@ const ArticleTabel = ({
                 </button>
               ))}
 
-              <button className="px-3 py-1.5 text-sm font-medium rounded-md border border-slate-200 text-slate-600 bg-white hover:bg-slate-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors">
+              <button
+                onClick={() =>
+                  setPage(Math.min(page + 1, pagination?.totalPages ?? 1))
+                }
+                disabled={page >= (pagination?.totalPages ?? 1)}
+                className="px-3 py-1.5 text-sm font-medium rounded-md border border-slate-200 text-slate-600 bg-white hover:bg-slate-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              >
                 Next
               </button>
             </div>

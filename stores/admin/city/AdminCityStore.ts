@@ -11,7 +11,7 @@ type City = {
 
 type Params = {
   name: string;
-  pages: number;
+  page: number;
   limit: number;
 };
 

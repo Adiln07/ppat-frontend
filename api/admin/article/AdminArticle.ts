@@ -4,7 +4,7 @@ import { ArticleData } from "@/types/Article";
 export const adminArticleApi = {
   getAllArticles: async (params?: {
     name?: string;
-    pages?: number;
+    page?: number;
     limit?: number;
   }) => {
     try {
