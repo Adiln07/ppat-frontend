@@ -42,7 +42,7 @@ export default function ModalAddCity({
 
               await fetchGetAllCity({
                 name: search,
-                pages: page,
+                page: page,
                 limit,
               });
 

@@ -72,7 +72,7 @@ export default function ModalAddArticle({
 
       await fetchGetAllArticle({
         name: search,
-        pages: page,
+        page: page,
         limit,
       });
 

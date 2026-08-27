@@ -41,7 +41,7 @@ const ModalDeleteNotary = ({
       await deleteNotary(notaryId);
       await fetchGetAllNotary({
         name: search,
-        pages: page,
+        page: page,
         limit,
       });
     } catch (error) {}

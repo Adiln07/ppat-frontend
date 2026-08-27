@@ -58,7 +58,7 @@ export default function ModalEditCity({
 
               await fetchGetAllCity({
                 name: search,
-                pages: page,
+                page: page,
                 limit,
               });
 

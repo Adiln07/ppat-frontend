@@ -38,7 +38,7 @@ export default function ModalDeleteCity({
       await deleteCity(cityId);
       await fetchGetAllCity({
         name: search,
-        pages: page,
+        page: page,
         limit,
       });
     } catch (error) {}

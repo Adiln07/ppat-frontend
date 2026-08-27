@@ -45,7 +45,7 @@ export default function ModalAddNotary({
           await addNotaryApi(addNotary);
           await fetchGetAllNotary({
             name: search,
-            pages: page,
+            page: page,
             limit,
           });
           try {

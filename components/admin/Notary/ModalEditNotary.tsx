@@ -67,7 +67,7 @@ const ModalEditNotary = ({
             await editNotaryApi(notaryId, editNotary);
             await fetchGetAllNotary({
               name: search,
-              pages: page,
+              page: page,
               limit,
             });
           } catch (error) {}

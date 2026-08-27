@@ -44,7 +44,7 @@ const ModalDeleteArticle = ({
       await deleteArticle(articleId);
       await fetchGetAllArticle({
         name: search,
-        pages: page,
+        page: page,
         limit,
       });
     } catch (error) {}
