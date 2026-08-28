@@ -42,7 +42,7 @@ const BerandaView = () => {
             <div className="flex flex-col gap-y-2 md:gap-y-6">
               <p className="text-[10px] md:text-2xl font-extrabold text-[#191C1D] leading-tight md:leading-normal">
                 Ikatan Pejabat Pembuat Akta Tanah (IPPAT) Pengurus Daerah
-                Parepare
+                Parepare dan Sekitarnya
               </p>
               <p className="text-[7px] md:text-base text-[#5A403E] leading-tight md:leading-normal">
                 Mewujudkan pelayanan pertanahan yang profesional, berintegritas,
@@ -90,14 +90,15 @@ const BerandaView = () => {
           <div className="w-1/2 py-2 md:py-10">
             <div className="flex flex-col gap-y-2 md:gap-y-6">
               <p className="text-[10px] md:text-2xl font-extrabold text-[#191C1D]">
-                Tentang IPPAT Parepare
+                Tentang IPPAT Parepare dan Sekitarnya
               </p>
               <p className="text-[7px] md:text-base text-[#5A403E] leading-tight md:leading-normal">
-                Pengurus Daerah IPPAT Parepare adalah wadah berhimpun para
-                Pejabat Pembuat Akta Tanah (PPAT) di wilayah kerja Kota
-                Parepare. Kami berkomitmen untuk terus meningkatkan kualitas
-                pelayanan, menjaga kode etik profesi, serta bersinergi dengan
-                pemerintah dan masyarakat dalam urusan pertanahan.
+                Pengurus Daerah IPPAT Parepare dan Sekitarnya adalah wadah
+                berhimpun para Pejabat Pembuat Akta Tanah (PPAT) di wilayah
+                kerja Kota Parepare dan sekitarnya. Kami berkomitmen untuk terus
+                meningkatkan kualitas pelayanan, menjaga kode etik profesi,
+                serta bersinergi dengan pemerintah dan masyarakat dalam urusan
+                pertanahan.
               </p>
             </div>
             <div className="mt-2 md:mt-5 flex">
@@ -180,7 +181,7 @@ const BerandaView = () => {
             </p>
             <p className="text-[#5A403E] mb-3 md:mb-5 text-[7px] md:text-base">
               Daftar resmi Pejabat Pembuat Akta Tanah di wilayah kerja Kota
-              Parepare.
+              Parepare dan sekitarnya.
             </p>
           </div>
           <div className="overflow-hidden rounded-md md:rounded-lg border border-slate-200 w-full">

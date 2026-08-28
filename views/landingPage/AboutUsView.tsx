@@ -129,13 +129,13 @@ const AboutUs = () => {
         <section className="px-6 md:px-12 lg:px-24 bg-[#E1E3E4]">
           <div className="py-10 md:py-20 flex flex-col gap-y-4 md:gap-y-8">
             <p className="text-center text-[#8F000D] font-extrabold text-2xl md:text-3xl">
-              Mengenal IPPAT Parepare
+              Mengenal IPPAT Parepare dan sekitarnya
             </p>
             <p className="text-justify md:[text-align-last:center] px-0 sm:px-10 md:px-36 text-[#5A403E] text-sm md:text-base">
               Ikatan Pejabat Pembuat Akta Tanah (IPPAT) Pengurus Daerah Parepare
-              adalah wadah perhimpunan profesi PPAT yang berdedikasi untuk
-              melayani masyarakat dalam bidang keperdataan khususnya pertanahan
-              dengan integritas dan profesionalisme tinggi.
+              dan sekitarnya adalah wadah perhimpunan profesi PPAT yang
+              berdedikasi untuk melayani masyarakat dalam bidang keperdataan
+              khususnya pertanahan dengan integritas dan profesionalisme tinggi.
             </p>
           </div>
         </section>
@@ -157,9 +157,9 @@ const AboutUs = () => {
               </p>
               <p className="text-[#5A403E] lg:pr-10 text-justify text-sm md:text-base">
                 Menjadi organisasi profesi PPAT yang bermartabat, profesional,
-                dan terpercaya di wilayah Parepare, serta berkontribusi aktif
-                dalam mewujudkan kepastian hukum hak atas tanah bagi seluruh
-                lapisan masyarakat.
+                dan terpercaya di wilayah Parepare dan sekitarnya, serta
+                berkontribusi aktif dalam mewujudkan kepastian hukum hak atas
+                tanah bagi seluruh lapisan masyarakat.
               </p>
             </div>
             <div className="bg-[#E1E3E4] rounded-sm p-6 lg:py-6 lg:pl-6 flex flex-col gap-y-6 lg:gap-y-8 flex-1">
@@ -229,11 +229,11 @@ const AboutUs = () => {
               </div>
               <div className="w-full lg:w-1/2 flex flex-col gap-y-3 text-[#5A403E] text-justify text-sm md:text-base">
                 <span>
-                  IPPAT Pengurus Daerah Parepare didirikan dengan semangat untuk
-                  menyatukan visi dan misi para Pejabat Pembuat Akta Tanah yang
-                  bertugas di wilayah strategis ini. Sebagai simpul jalur
-                  perdagangan dan jasa, Parepare membutuhkan kepastian hukum
-                  pertanahan yang solid.
+                  IPPAT Pengurus Daerah Parepare dan sekitarnya didirikan dengan
+                  semangat untuk menyatukan visi dan misi para Pejabat Pembuat
+                  Akta Tanah yang bertugas di wilayah strategis ini. Sebagai
+                  simpul jalur perdagangan dan jasa, Parepare dan sekitarnya
+                  membutuhkan kepastian hukum pertanahan yang solid.
                 </span>
                 <span>
                   Sejak awal pembentukannya, organisasi ini terus beradaptasi
@@ -244,9 +244,9 @@ const AboutUs = () => {
                 </span>
                 <span>
                   Melalui berbagai kepengurusan yang berganti, IPPAT Parepare
-                  konsisten menyelenggarakan pembinaan anggota, diskusi panel
-                  hukum, dan kegiatan sosial sebagai bentuk tanggung jawab
-                  organisasi terhadap lingkungan sekitarnya.
+                  dan sekitarnya konsisten menyelenggarakan pembinaan anggota,
+                  diskusi panel hukum, dan kegiatan sosial sebagai bentuk
+                  tanggung jawab organisasi terhadap lingkungan sekitarnya.
                 </span>
               </div>
             </div>
@@ -263,7 +263,8 @@ const AboutUs = () => {
                 STRUKTUR ORGANISASI
               </p>
               <p className="text-center text-[#5A403E] text-sm md:text-md font-extralight">
-                Susunan Pengurus Daerah IPPAT Parepare Periode 2024 - 2027
+                Susunan Pengurus Daerah IPPAT Parepare dan Sekitarnya Periode
+                2024 - 2027
               </p>
             </div>
 
@@ -439,7 +440,7 @@ const AboutUs = () => {
                   className="text-4xl md:text-6xl text-[#8F000D]"
                 />
                 <p className="font-bold text-xl md:text-2xl text-[#191C1D]">
-                  Kota Parepare
+                  Daerah Parepare dan Sekitarnya
                 </p>
                 <p className="text-[#5A403E] text-sm md:text-base">
                   Meliputi Kab. Barru, Kota Parepare, Kab. Sidenreng Rappang,

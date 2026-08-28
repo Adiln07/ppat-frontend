@@ -48,9 +48,9 @@ const NewsView = () => {
             Berita & Informasi
           </p>
           <p className="text-xs sm:text-sm md:text-base text-[#5A403E] mt-1 md:mt-2 max-w-2xl">
-            Stay updated with the latest news, official announcements, and
-            procedural updates from IPPAT Parepare. Ensuring transparency and
-            legal reliability.
+            Tetap mendapatkan informasi terbaru mengenai berita, pengumuman
+            resmi, dan pembaruan prosedur dari IPPAT Parepare dan sekitarnya.
+            Memastikan transparansi dan keandalan informasi hukum.
           </p>
         </div>
 

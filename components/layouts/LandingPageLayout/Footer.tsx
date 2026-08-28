@@ -62,10 +62,13 @@ const Footer = () => {
     <div className="bg-[#E1E3E4]">
       <div className="flex flex-col md:flex-row px-6 md:px-15 pt-10 md:pt-15 pb-10 justify-around gap-10">
         <div className="flex flex-col gap-y-3 w-full md:w-1/3">
-          <p className="text-[#8F000D] font-bold text-lg">IPPAT Parepare</p>
+          <p className="text-[#8F000D] font-bold text-lg">
+            IPPAT Pengurus Daerah Parepare dan Sekitarnya
+          </p>
           <p className="text-[#5A403E] text-sm md:text-base">
-            Ikatan Pejabat Pembuat Akta Tanah (IPPAT) Pengurus Daerah Parepare.
-            Berkomitmen pada integritas dan pelayanan hukum yang prima.
+            Ikatan Pejabat Pembuat Akta Tanah (IPPAT) Pengurus Daerah Parepare
+            dan sekitarnya. Berkomitmen pada integritas dan pelayanan hukum yang
+            prima.
           </p>
         </div>
         <div className="flex flex-col gap-y-3">
@@ -103,7 +106,8 @@ const Footer = () => {
       </div>
       <div className="py-3 bg-[#cacaca] px-4">
         <p className="text-center text-xs md:text-sm text-[#5A403E]">
-          © 2024 IPPAT Pengurus Daerah Parepare. All Rights Reserved.
+          © 2024 IPPAT Pengurus Daerah Parepare dan Sekitarnya. All Rights
+          Reserved.
         </p>
       </div>
     </div>
